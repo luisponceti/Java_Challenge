@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Cadastro de Produto</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="description" value="Descrição:" />
+            <h:inputText id="description" value="#{productBean.description}" maxlength="50" required="true" />
+
+            <h:outputLabel for="expirationDate" value="Data de Validade:" />
+            <h:inputText id="expirationDate" value="#{productBean.expirationDate}" required="true">
+                <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:inputText>
+
+            <h:outputLabel for="registrationDate" value="Data de Cadastro:" />
+            <h:inputText id="registrationDate" value="#{productBean.registrationDate}" required="true">
+                <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:inputText>
+
+            <h:outputLabel for="price" value="Preço:" />
+            <h:inputText id="price" value="#{productBean.price}" required="true">
+                <f:convertNumber type="currency" currencySymbol="R$ " maxFractionDigits="2" />
+            </h:inputText>
+
+            <h:outputLabel for="active" value="Ativo:" />
+            <h:selectBooleanCheckbox id="active" value="#{productBean.active}" />
+
+            <h:panelGroup />
+            <h:panelGroup>
+                <h:commandButton value="Limpar" action="#{productBean.clear}" />
+                <h:commandButton value="Gravar" action="#{productBean.save}" />
+            </h:panelGroup>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
